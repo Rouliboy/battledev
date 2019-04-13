@@ -21,7 +21,17 @@ public class UtilityClass {
     System.out.println(allPermutationsOfStringArrayWithRepeat(new String[] {"A", "B", "C"}));
   }
 
+  @Test
+  public void testDisplayMatrix() {
+    final String[][] matrix = new String[2][3];
+    matrix[0] = new String[] {"1", "2", "3"};
+    matrix[1] = new String[] {"4", "5", "6"};
+    displayMatrix(matrix);
+  }
+
+  /***************************************************************/
   /** All permutations of String Array WITH repetition of character */
+  /***************************************************************/
 
   private static Set<String> allPermutationsOfStringArrayWithRepeat(final String[] array) {
     final Set<String> result = new LinkedHashSet<>();
@@ -46,7 +56,9 @@ public class UtilityClass {
     }
   }
 
+  /***************************************************************/
   /** All permutations of String WITH repetition of character */
+  /***************************************************************/
 
   private static Set<String> allPermutationsOfStringWithRepeat(final String str) {
     final Set<String> result = new LinkedHashSet<>();
@@ -65,7 +77,9 @@ public class UtilityClass {
     }
   }
 
+  /***************************************************************/
   /** All permutations of String WITHOUT repetition of character */
+  /***************************************************************/
 
   private static Set<String> allPermutationsOfStringWithoutRepeat(final String str) {
     final Set<String> result = new LinkedHashSet<>();
@@ -81,6 +95,20 @@ public class UtilityClass {
     for (int i = 0; i < str.length(); ++i) {
       allPermutationsWithoutRepeat(prefix + str.charAt(i),
           str.substring(0, i) + str.substring(i + 1), size, result);
+    }
+  }
+
+  /*******************/
+  /** Display matrix */
+  /*******************/
+
+  private static <T> void displayMatrix(final T[][] matrix) {
+    for (int i = 0; i < matrix.length; ++i) {
+      String line = "";
+      for (int j = 0; j < matrix[0].length; ++j) {
+        line = line + matrix[i][j] + " ";
+      }
+      System.out.println(line);
     }
   }
 }
